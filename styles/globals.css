@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: #151616;
+  }
+}
+
+.fade-enter {
+  opacity: 0;
+  scale: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  scale: 1;
+  transition: all 300ms ease;
+}
+.fade-exit {
+  opacity: 1;
+  scale: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  scale: 0;
+  transition: all 300ms ease;
+}
+
+
+.fadeOut-enter {
+  opacity: 0;
+  scale: 0;
+}
+.fadeOut-enter-active {
+  opacity: 1;
+  scale: 1;
+  transition: all 300ms ease;
+}
+.fadeOut-exit {
+  opacity: 1;
+  scale: 1;
+}
+.fadeOut-exit-active {
+  opacity: 0;
+  scale: 0;
+  transition: all 300ms ease;
+}
