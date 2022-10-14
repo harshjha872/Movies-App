@@ -6,11 +6,15 @@ const SingleShowMovie = (props) => {
     <SingleShowPage
       image={props.tmdbData.backdrop_path}
       movieName={props.omdbData.Title}
-      imdb={props.omdbData?.Ratings[0]?.Value}
-      rt={props.omdbData?.Ratings[1]?.Value}
-      metacritic={props.omdbData?.Ratings[2]?.Value}
+      imdb={props?.omdbData?.Ratings[0]?.Value}
+      rt={props?.omdbData?.Ratings[1]?.Value}
+      metacritic={props?.omdbData?.Ratings[2]?.Value}
       genre={props.omdbData.Genre}
-      overview={props.tmdbData.overview}
+      overview={
+        props.tmdbData.overview === ""
+          ? props.omdbData.Plot
+          : props.tmdbData.overview
+      }
       actors={props.omdbData.Actors}
       rated={props.omdbData.Rated}
       creators={props.omdbData.Writer}
