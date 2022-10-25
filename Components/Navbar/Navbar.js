@@ -51,8 +51,8 @@ const Navbar = () => {
             onClick={HamClickHandler}
           />
           <Link href="/">
-            <span className="md:m-4 text-2xl md:text-3xl cursor-pointer">
-              Netflix
+            <span className="md:m-4 text-2xl md:text-2xl cursor-pointer">
+              MovieSaga
             </span>
           </Link>
           <Link href="/movies">
