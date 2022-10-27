@@ -33,19 +33,16 @@ const Login = (props) => {
     e.preventDefault();
     setEmail("");
     setPassword("");
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Email,
-          password,
-        }),
-      }
-    );
+    const response = await fetch("https://localhost:3000/api/loginuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Email,
+        password,
+      }),
+    });
     const data = await response.json();
     if (data.message === "Successful login") {
       toastInitiator("logged in successfully", "success");
