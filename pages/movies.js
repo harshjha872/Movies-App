@@ -20,6 +20,7 @@ const MoviesPage = (props) => {
       dispatch(WatchlistActions.emptyWatchlist());
     }
   }, [dispatch, props.isUserloggedIn]);
+
   return (
     <>
       <Navbar />

@@ -33,7 +33,7 @@ const Login = (props) => {
     e.preventDefault();
     setEmail("");
     setPassword("");
-    const response = await fetch("http://localhost:3000/api/loginuser", {
+    const response = await fetch("https://localhost:3000/api/loginuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
