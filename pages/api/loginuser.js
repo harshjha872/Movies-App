@@ -38,6 +38,8 @@ const loginHandler = async (req, res) => {
     res.setHeader("Set-Cookie", serialised);
 
     res.status(201).json({ message: "Successful login" });
+  } else {
+    res.status(201).json({ message: "Invalid req type" });
   }
 };
 
