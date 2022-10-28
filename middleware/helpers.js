@@ -13,7 +13,7 @@ export async function verify(context) {
     return result;
   }
 
-  const response = await fetch("http://localhost:3000/api/verifyuser", {
+  const response = await fetch(`${process.env.HOST}/api/verifyuser`, {
     headers: {
       Authorization: "Bearer " + token,
     },

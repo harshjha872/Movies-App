@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   const LogoutHandler = async () => {
-    const response = await fetch("http://localhost:3000/api/logout");
+    const response = await fetch(`${process.env.HOST}/api/logout`);
     const data = await response.json();
     if (
       data.message === "Successfuly logged out!" ||

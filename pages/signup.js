@@ -40,7 +40,7 @@ const Signup = (props) => {
     setName("");
     setEmail("");
     setPassword("");
-    const response = await fetch("http://localhost:3000/api/adduser", {
+    const response = await fetch(`${process.env.HOST}/api/adduser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -72,7 +72,7 @@ const MovieCard = (props) => {
     setBookMarked(true);
     if (CurrentUserloginStatus) {
       const response = await fetch(
-        "http://localhost:3000/api/addshowtowatchlist",
+        `${process.env.HOST}/api/addshowtowatchlist`,
         {
           method: "POST",
           headers: {
@@ -90,7 +90,7 @@ const MovieCard = (props) => {
     dispatch(WatchlistActions.DeleteMovieFromWatchlist(props));
     if (CurrentUserloginStatus) {
       const response = await fetch(
-        "http://localhost:3000/api/delShowfromwatchlist",
+        `${process.env.HOST}/api/delShowfromwatchlist`,
         {
           method: "POST",
           headers: {
