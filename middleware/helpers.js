@@ -13,11 +13,14 @@ export async function verify(context) {
     return result;
   }
 
-  const response = await fetch(`${process.env.HOST}/api/verifyuser`, {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/verifyuser`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
   const data = await response.json();
 
   if (data.message === "access allowed") result.isUserloggedIn = true;

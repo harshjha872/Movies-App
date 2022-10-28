@@ -40,17 +40,20 @@ const Signup = (props) => {
     setName("");
     setEmail("");
     setPassword("");
-    const response = await fetch(`${process.env.HOST}/api/adduser`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        Email,
-        password,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST}/api/adduser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          Email,
+          password,
+        }),
+      }
+    );
     const data = await response.json();
 
     switch (data.message) {

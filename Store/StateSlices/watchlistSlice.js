@@ -39,7 +39,9 @@ const WatchlistSlice = createSlice({
 
 export const getUsersWatchlist = () => {
   return async (dispatch) => {
-    const response = await fetch(`${process.env.HOST}/api/getwatchlist`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST}/api/getwatchlist`
+    );
     const data = await response.json();
     if (data) dispatch(WatchlistActions.getWatchlist(data));
   };
