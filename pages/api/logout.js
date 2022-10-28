@@ -6,7 +6,7 @@ const handler = async (req, res) => {
   const jwt = cookies.token;
 
   if (!jwt) {
-    return res.json({ message: "Bro you are already not logged in..." });
+    return res.json({ message: "already logged out" });
   } else {
     const serialised = serialize("token", null, {
       httpOnly: true,
