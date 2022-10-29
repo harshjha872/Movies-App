@@ -33,6 +33,7 @@ const Login = (props) => {
     e.preventDefault();
     setEmail("");
     setPassword("");
+    console.log(JSON.stringify({ Email, password }));
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_HOST}/api/loginuser`,
       {
