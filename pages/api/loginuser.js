@@ -11,7 +11,7 @@ const loginHandler = async (req, res) => {
         .status(201)
         .json({ message: "No email and password found in the body" });
     }
-    const { Email, password } = req.body;
+    const { Email, password } = JSON.parse(req.body);
     if (!Email) res.status(201).json({ message: "no email found" });
     if (!password) res.status(201).json({ message: "no password found" });
     const user = await User.findOne({ email: Email });
