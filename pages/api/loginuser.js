@@ -11,14 +11,10 @@ const loginHandler = async (req, res) => {
         .status(201)
         .json({ message: "No email and password found in the body" });
     }
-    console.log(req.body);
     const { Email, password } = req.body;
-    console.log(Email);
-    console.log(password);
     if (!Email) res.status(201).json({ message: "no email found" });
     if (!password) res.status(201).json({ message: "no password found" });
     const user = await User.findOne({ email: Email }).exec();
-    console.log(user);
     if (!user) res.status(200).json({ message: "User does not exist" });
 
     const decryptedPassword = CryptoJS.AES.decrypt(
