@@ -7,15 +7,16 @@ import { serialize } from "cookie";
 const loginHandler = async (req, res) => {
   if (req.method === "POST") {
     if (!req.body) {
-      res
-        .status(201)
+      return res
+        .status(401)
         .json({ message: "No email and password found in the body" });
     }
     const { Email, password } = req.body;
-    if (!Email) res.status(201).json({ message: "no email found" });
-    if (!password) res.status(201).json({ message: "no password found" });
+    if (!Email) return res.status(401).json({ message: "no email found" });
+    if (!password)
+      return res.status(401).json({ message: "no password found" });
     const user = await User.findOne({ email: Email }).exec();
-    if (!user) res.status(200).json({ message: "User does not exist" });
+    if (!user) return res.status(401).json({ message: "User does not exist" });
 
     const decryptedPassword = CryptoJS.AES.decrypt(
       user.password,
@@ -23,7 +24,7 @@ const loginHandler = async (req, res) => {
     ).toString(CryptoJS.enc.Utf8);
 
     if (password !== decryptedPassword)
-      res.status(200).json({ message: "Incorrect Password" });
+      return res.status(401).json({ message: "Incorrect Password" });
 
     const payload = {
       id: user._id,
@@ -44,9 +45,9 @@ const loginHandler = async (req, res) => {
 
     res.setHeader("Set-Cookie", serialised);
 
-    res.status(201).json({ message: "Successful login" });
+    return res.status(200).json({ message: "Successful login" });
   } else {
-    res.status(201).json({ message: "Invalid req type" });
+    return res.status(405).json({ message: "Invalid req type" });
   }
 };
 
