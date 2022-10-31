@@ -15,37 +15,43 @@ const loginHandler = async (req, res) => {
     if (!Email) return res.status(401).json({ message: "no email found" });
     if (!password)
       return res.status(401).json({ message: "no password found" });
-    const user = await User.findOne({ email: Email }).exec();
-    if (!user) return res.status(401).json({ message: "User does not exist" });
 
-    const decryptedPassword = CryptoJS.AES.decrypt(
-      user.password,
-      process.env.SECRET_KEY
-    ).toString(CryptoJS.enc.Utf8);
+    try {
+      const user = await User.findOne({ email: Email }).exec();
+      if (!user)
+        return res.status(401).json({ message: "User does not exist" });
 
-    if (password !== decryptedPassword)
-      return res.status(401).json({ message: "Incorrect Password" });
+      const decryptedPassword = CryptoJS.AES.decrypt(
+        user.password,
+        process.env.SECRET_KEY
+      ).toString(CryptoJS.enc.Utf8);
 
-    const payload = {
-      id: user._id,
-      name: user.name,
-    };
+      if (password !== decryptedPassword)
+        return res.status(401).json({ message: "Incorrect Password" });
 
-    const token = jwt.sign(payload, process.env.SECRET_KEY, {
-      expiresIn: "3d",
-    });
+      const payload = {
+        id: user._id,
+        name: user.name,
+      };
 
-    const serialised = serialize("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV !== "development",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 24 * 30,
-      path: "/",
-    });
+      const token = jwt.sign(payload, process.env.SECRET_KEY, {
+        expiresIn: "3d",
+      });
 
-    res.setHeader("Set-Cookie", serialised);
+      const serialised = serialize("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== "development",
+        sameSite: "strict",
+        maxAge: 60 * 60 * 24 * 30,
+        path: "/",
+      });
 
-    return res.status(200).json({ message: "Successful login" });
+      res.setHeader("Set-Cookie", serialised);
+
+      return res.status(200).json({ message: "Successful login" });
+    } catch (err) {
+      console.log(err);
+    }
   } else {
     return res.status(405).json({ message: "Invalid req type" });
   }
