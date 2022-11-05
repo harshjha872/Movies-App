@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const handler = async (req, res) => {
+const verifyUser = async (req, res) => {
   if (!req.headers.authorization)
     res.status(401).json({ message: "no auth headers and no token" });
 
@@ -16,4 +16,4 @@ const handler = async (req, res) => {
   }
 };
 
-export default handler;
+export default verifyUser;

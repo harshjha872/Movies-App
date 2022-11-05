@@ -3,7 +3,7 @@ import User from "../../Modals/User";
 import mongoose from "mongoose";
 import connectdb from "../../middleware/mongoose";
 
-const handler = async (req, res) => {
+const getWatchlist = async (req, res) => {
   if (!(await req.cookies.token))
     res
       .status(401)
@@ -25,4 +25,4 @@ const handler = async (req, res) => {
   }
 };
 
-export default connectdb(handler);
+export default connectdb(getWatchlist);

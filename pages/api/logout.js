@@ -1,6 +1,6 @@
 import { serialize } from "cookie";
 
-const handler = async (req, res) => {
+const logoutHandler = async (req, res) => {
   const { cookies } = req;
 
   const jwt = cookies.token;
@@ -22,4 +22,4 @@ const handler = async (req, res) => {
   }
 };
 
-export default handler;
+export default logoutHandler;
