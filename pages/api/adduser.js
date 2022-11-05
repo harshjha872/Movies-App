@@ -5,12 +5,12 @@ const CryptoJS = require("crypto-js");
 const addUser = async (req, res) => {
   if (req.method === "POST") {
     if (!req.body.Email || !req.body.password)
-      res.json(JSON.stringify({ message: "Invalid user information" }));
+      res.json({ message: "Invalid user information" });
     try {
       const userAlreadyExist = await User.findOne({ email: req.body.Email });
 
       if (userAlreadyExist) {
-        res.json(JSON.stringify({ message: "User already exist" }));
+        res.json({ message: "User already exist" });
         throw new Error("User already exist");
       }
 
@@ -28,11 +28,9 @@ const addUser = async (req, res) => {
 
       await newuser.save();
 
-      res.status(201).json(
-        JSON.stringify({
-          message: "User created",
-        })
-      );
+      res.status(201).json({
+        message: "User created",
+      });
     } catch (err) {
       console.log(err);
     }
