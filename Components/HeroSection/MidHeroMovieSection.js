@@ -17,15 +17,12 @@ const MidHeroMovieSection = () => {
         </div>
         <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-neutral-100">
-            Before they sold out
+            Watch the best movies
             <br className="hidden lg:inline-block" />
-            readymade gluten
+            trending today!
           </h1>
           <p className="mb-8 leading-relaxed">
-            Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-            plant cold-pressed tacos poke beard tote bag. Heirloom echo park
-            mlkshk tote bag selvage hot chicken authentic tumeric truffaut
-            hexagon try-hard chambray.
+            Explore your fav movies and web series that are trending today, Bookmark them right now to watch them later. MoviesSaga has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want
           </p>
         </div>
       </FadeUpWrapper>
