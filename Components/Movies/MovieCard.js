@@ -120,7 +120,7 @@ const MovieCard = (props) => {
           {props.movieName}
         </h2>
         <h3 className="tracking-widest text-neutral-500 text-xs font-medium title-font py-1 mb-2">
-          {props.year.slice(0, 4)}
+          {props.year && props.year.slice(0, 4)}
         </h3>
         <div className="leading-relaxed text-base flex justify-between items-center relative mt-2">
           {genreids[props.genre[0]]}

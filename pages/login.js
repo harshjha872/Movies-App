@@ -67,7 +67,6 @@ const Login = (props) => {
         </div>
         <div>Email</div>
         <input
-          Emai
           id="Email"
           name="Email"
           type="email"
