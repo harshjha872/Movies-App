@@ -12,7 +12,7 @@ const Movies = () => {
   useEffect(() => {
     const FetchingMovies = async () => {
       const data = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?api_key=f91458f7d7dd51c6920d723c52564c4a&language=en-US&page=2"
+        "https://api.themoviedb.org/3/movie/popular?api_key=f91458f7d7dd51c6920d723c52564c4a&language=en-US&page=1"
       );
       const response = await data.json();
       if (response) setLoading(false);
